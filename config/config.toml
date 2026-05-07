@@ -1,0 +1,79 @@
+suppress_unstable_features_warning = true
+profile = "litellm"
+preferred_auth_method = "apikey"
+approval_policy = "never"
+sandbox_mode = "danger-full-access"
+file_opener = "cursor"
+
+
+# =========================
+# PROFILES
+# =========================
+
+
+# Litellm profile
+
+
+[profiles.litellm]
+model_provider = "litellm"
+model = "gpt-5.5"
+model_reasoning_effort = "high"
+personality = "pragmatic"
+
+
+[model_providers.litellm]
+name = "Litellm"
+base_url = "https://litellm.cogmo.com.br"
+env_key = "LITELLM_API_KEY"
+query_params = { api-version = "2025-04-01-preview" }
+wire_api = "responses"
+
+
+# =========================
+# HISTÓRICO
+# =========================
+
+
+[history]
+# "save-all" = guarda todo o histórico em $CODEX_HOME/history.jsonl
+# "none" = não salvar histórico
+persistence = "save-all"
+
+
+# =========================
+# Agents
+# =========================
+
+
+[agents]
+max_threads = 10
+max_depth = 3
+
+
+# =========================
+# FEATURE FLAGS
+# =========================
+
+
+[features]
+
+
+rmcp_client = true
+shell_tool = true
+artifact = true
+image_detail_original = true
+js_repl = true
+multi_agent = true
+prevent_idle_sleep = true
+
+
+# =========================
+# MCP SERVERS
+# =========================
+
+
+[mcp_servers.chrome]
+command = "npx"
+args = ["-y", "chrome-devtools-mcp@latest", "--channel=stable", "--isolated", "--chromeArg=--headless=new"]
+startup_timeout_sec = 20.0
+tool_timeout_sec = 60.0

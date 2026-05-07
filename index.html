@@ -1,0 +1,2376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mercado 61 - Brasília</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-color: #2E7D32;
+            --secondary-color: #4CAF50;
+            --accent-color: #FF9800;
+            --danger-color: #F44336;
+            --success-color: #4CAF50;
+            --warning-color: #FF9800;
+            --info-color: #2196F3;
+            --light-color: #F5F5F5;
+            --dark-color: #212121;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, rgba(46, 125, 50, 0.9) 0%, rgba(76, 175, 80, 0.9) 100%);
+            padding: 4rem 0;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="50" r="2" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Barra de Busca Principal */
+        .search-section {
+            position: relative;
+            z-index: 3;
+        }
+
+        .search-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .search-container .input-group {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            border-radius: 50px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+
+        .search-container .form-control {
+            border: none;
+            border-radius: 50px 0 0 50px;
+            padding: 1rem 1.5rem;
+            font-size: 1.1rem;
+            background: transparent;
+        }
+
+        .search-container .form-control:focus {
+            box-shadow: none;
+            background: rgba(255, 255, 255, 0.98);
+        }
+
+        .search-container .btn {
+            border: none;
+            border-radius: 0 50px 50px 0;
+            padding: 0 2rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            transition: all 0.3s ease;
+        }
+
+        .search-container .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+        }
+
+        .search-filters {
+            text-align: center;
+        }
+
+        .search-filters .form-select {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0,0,0,0.1);
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: var(--dark-color);
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: -2rem auto 0;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* Navegação por Abas */
+        .nav-tabs-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 1rem;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+
+        .nav-tabs {
+            border: none;
+            background: transparent;
+        }
+
+        .nav-tabs .nav-link {
+            border: none;
+            border-radius: 10px;
+            color: var(--dark-color);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            margin: 0 0.25rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-tabs .nav-link:hover {
+            background: rgba(46, 125, 50, 0.1);
+            color: var(--primary-color);
+        }
+
+        .nav-tabs .nav-link.active {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+        }
+
+        .tab-content {
+            margin-top: 2rem;
+        }
+
+        .card {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+        }
+
+        .form-section {
+            padding: 3rem;
+        }
+
+        .form-title {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .form-label {
+            font-weight: 500;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 0.75rem 1rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.2rem rgba(46, 125, 50, 0.25);
+        }
+
+        
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 1rem 2rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(46, 125, 50, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(46, 125, 50, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #25D366 0%, #1EBEA5 100%);
+            border: none;
+            border-radius: 14px;
+            padding: 0.85rem 1.5rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 0.02em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .btn-success:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(37, 211, 102, 0.25);
+        }
+
+        .btn-maps {
+            background: #ffffff;
+            color: #2c3e50;
+            border: 1px solid rgba(44, 62, 80, 0.15);
+            border-radius: 12px;
+            padding: 0.85rem 1.5rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+
+        .btn-maps:hover {
+            transform: translateY(-2px);
+            border-color: rgba(44, 62, 80, 0.35);
+            box-shadow: 0 10px 22px rgba(44, 62, 80, 0.12);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, var(--danger-color) 0%, #EF5350 100%);
+            border: none;
+            border-radius: 12px;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+        }
+
+        .loja-card {
+            border-radius: 24px;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid rgba(34, 34, 34, 0.06);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, 0.08);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .loja-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 22px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .loja-card .card-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .loja-card .card-text {
+            color: #4f4f4f;
+        }
+
+        .loja-card .badge-ra {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            background: rgba(46, 125, 50, 0.08);
+            color: var(--primary-color);
+            border-radius: 999px;
+            padding: 0.35rem 0.9rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .info-icons {
+            font-size: 0.95rem;
+            color: var(--dark-color);
+        }
+
+        .info-icons .d-flex {
+            margin-bottom: 0.5rem;
+        }
+
+        .info-icons .d-flex span:first-child {
+            font-size: 1.1rem;
+        }
+
+        /* Modal Como Chegar */
+        .modal-content {
+            border-radius: 20px;
+            border: none;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid #e0e0e0;
+            padding: 1.5rem;
+        }
+
+        .modal-title {
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .map-container {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .endereco-completo {
+            background: rgba(46, 125, 50, 0.05);
+            padding: 1rem;
+            border-radius: 12px;
+        }
+
+        .endereco-completo h6 {
+            color: var(--primary-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-footer {
+            border-top: 1px solid #e0e0e0;
+            padding: 1.5rem;
+        }
+
+        .alert {
+            border-radius: 12px;
+            border: none;
+            font-weight: 500;
+        }
+
+        .alert-success {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1) 0%, rgba(129, 199, 132, 0.1) 100%);
+            color: var(--success-color);
+        }
+
+        .alert-danger {
+            background: linear-gradient(135deg, rgba(244, 67, 54, 0.1) 0%, rgba(229, 115, 115, 0.1) 100%);
+            color: var(--danger-color);
+        }
+
+        .alert-warning {
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.1) 0%, rgba(255, 183, 77, 0.1) 100%);
+            color: var(--warning-color);
+        }
+
+        .loading-spinner {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            margin-top: 1rem;
+        }
+
+        .spinner-border-sm {
+            width: 1rem;
+            height: 1rem;
+        }
+
+        .stats-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 2rem;
+            margin-top: 2rem;
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-item {
+            text-align: center;
+            color: white;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 0.9);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .form-section {
+                padding: 2rem 1.5rem;
+            }
+
+            .main-container {
+                margin: -1rem auto 0;
+            }
+        }
+
+        .animate-fade-in {
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilos do Modal do Catálogo */
+        .modal-xl {
+            max-width: 1200px;
+        }
+
+        .modal-content {
+            border: none;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding: 1.5rem 2rem;
+        }
+
+        .modal-body {
+            padding: 2rem;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .modal-footer {
+            border-top: 1px solid rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+        }
+
+        /* Cards de produtos no catálogo */
+        #catalogoProdutos .card {
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #catalogoProdutos .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        #catalogoProdutos .card-img-top {
+            border-radius: 15px 15px 0 0;
+        }
+
+        #catalogoProdutos .card-body {
+            padding: 1.5rem;
+        }
+
+        #catalogoProdutos .card-title {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.5rem;
+        }
+
+        #catalogoProdutos .card-text {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+
+        /* Cards de produtos na busca */
+        .produto-busca-card {
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .produto-busca-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .produto-busca-card .card-img-top {
+            border-radius: 15px 15px 0 0;
+        }
+
+        .produto-busca-card .card-body {
+            padding: 1.25rem;
+        }
+
+        .produto-busca-card .card-title {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .produto-busca-card .card-text {
+            color: #666;
+            font-size: 0.85rem;
+            line-height: 1.3;
+            margin-bottom: 0.75rem;
+        }
+
+        .produto-busca-card .loja-info {
+            font-size: 0.8rem;
+        }
+
+        /* Cards de produtos em destaque */
+        .produto-destaque-card {
+            border-radius: 15px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .produto-destaque-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        .produto-destaque-card .card-img-top {
+            border-radius: 15px 15px 0 0;
+        }
+
+        .produto-destaque-card .card-body {
+            padding: 1rem;
+        }
+
+        .produto-destaque-card .card-title {
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 0.25rem;
+            font-size: 0.95rem;
+        }
+
+        .produto-destaque-card .card-text {
+            color: #666;
+            font-size: 0.75rem;
+            line-height: 1.3;
+            margin-bottom: 0.5rem;
+        }
+
+        .produto-destaque-card .loja-info-vitrine {
+            font-size: 0.75rem;
+        }
+
+        /* Etiqueta de Frete Grátis */
+        .badge-frete-gratis {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        /* Loading no catálogo */
+        #catalogoLoading {
+            color: var(--primary-color);
+        }
+
+        #catalogoLoading .spinner-border {
+            width: 3rem;
+            height: 3rem;
+        }
+
+        /* Categoria Bar */
+        .categoria-bar {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .categoria-btn {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            background-color: transparent;
+            padding: 0.7rem 1.2rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            white-space: nowrap;
+        }
+
+        .categoria-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+            color: white;
+        }
+
+        .categoria-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-color: #764ba2;
+            color: white;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Badge de Categoria nas Lojas */
+        .badge-categoria {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: white;
+        }
+
+        .badge-categoria-moda {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .badge-categoria-eletronicos {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+        }
+
+        .badge-categoria-pet {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .badge-categoria-servicos {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="hero-title">🏪 Mercado 61</h1>
+            <p class="hero-subtitle">Conectando vendedores e compradores de Brasília</p>
+
+            <!-- Barra de Busca Principal -->
+            <div class="search-section mb-4">
+                <div class="search-container">
+                    <div class="input-group input-group-lg">
+                        <input type="text" id="buscaPrincipal" class="form-control" placeholder="O que você está procurando hoje?" aria-label="Buscar produtos">
+                        <button class="btn btn-primary" type="button" id="btnBuscar" onclick="buscarProdutos()">
+                            <i class="bi bi-search"></i> Buscar
+                        </button>
+                    </div>
+                    <!-- Barra de Categorias -->
+                    <div class="categoria-bar mt-4 mb-4 text-center">
+                        <button class="btn btn-category categoria-btn active" data-categoria="" onclick="filtrarPorCategoria('')">
+                            <i class="bi bi-grid-3x3"></i> Todas
+                        </button>
+                        <button class="btn btn-category categoria-btn" data-categoria="Moda" onclick="filtrarPorCategoria('Moda')">
+                            <span style="font-size: 1.2rem;">👟</span> Moda
+                        </button>
+                        <button class="btn btn-category categoria-btn" data-categoria="Eletrônicos" onclick="filtrarPorCategoria('Eletrônicos')">
+                            <span style="font-size: 1.2rem;">📱</span> Eletrônicos
+                        </button>
+                        <button class="btn btn-category categoria-btn" data-categoria="Pet" onclick="filtrarPorCategoria('Pet')">
+                            <span style="font-size: 1.2rem;">🐾</span> Pet
+                        </button>
+                        <button class="btn btn-category categoria-btn" data-categoria="Serviços" onclick="filtrarPorCategoria('Serviços')">
+                            <span style="font-size: 1.2rem;">🛠️</span> Serviços
+                        </button>
+                    </div>
+
+                    <div class="search-filters mt-3">
+                        <select class="form-select form-select-sm d-inline-block w-auto" id="filtroRaBusca">
+                            <option value="">Todas as RAs</option>
+                            <option value="Plano Piloto">Plano Piloto</option>
+                            <option value="Asa Sul">Asa Sul</option>
+                            <option value="Asa Norte">Asa Norte</option>
+                            <option value="Lago Sul">Lago Sul</option>
+                            <option value="Lago Norte">Lago Norte</option>
+                            <option value="Taguatinga">Taguatinga</option>
+                            <option value="Brazlândia">Brazlândia</option>
+                            <option value="Sobradinho">Sobradinho</option>
+                            <option value="Planaltina">Planaltina</option>
+                            <option value="Paranoá">Paranoá</option>
+                            <option value="Núcleo Bandeirante">Núcleo Bandeirante</option>
+                            <option value="Ceilândia">Ceilândia</option>
+                            <option value="Guará">Guará</option>
+                            <option value="Cruzeiro">Cruzeiro</option>
+                            <option value="Samambaia">Samambaia</option>
+                            <option value="Santa Maria">Santa Maria</option>
+                            <option value="São Sebastião">São Sebastião</option>
+                            <option value="Recanto das Emas">Recanto das Emas</option>
+                            <option value="Riacho Fundo">Riacho Fundo</option>
+                            <option value="Riacho Fundo II">Riacho Fundo II</option>
+                            <option value="Sudoeste/Octogonal">Sudoeste/Octogonal</option>
+                            <option value="Varjão">Varjão</option>
+                            <option value="Park Way">Park Way</option>
+                            <option value="SCIA (Estrutural)">SCIA (Estrutural)</option>
+                            <option value="Sobradinho II">Sobradinho II</option>
+                            <option value="Jardim Botânico">Jardim Botânico</option>
+                            <option value="Itapoã">Itapoã</option>
+                            <option value="SIA">SIA</option>
+                            <option value="Vincúlus">Vincúlus</option>
+                            <option value="Fercal">Fercal</option>
+                            <option value="Arapoanga">Arapoanga</option>
+                            <option value="Águas Claras">Águas Claras</option>
+                            <option value="Arniqueira">Arniqueira</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats-section">
+                <div class="row">
+                    <div class="col-md-3 col-6">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalRas">33</span>
+                            <span class="stat-label">Regiões Administrativas</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalLojas">0</span>
+                            <span class="stat-label">Lojas Cadastradas</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalProdutos">0</span>
+                            <span class="stat-label">🔥 Ofertas do Quadrado Disponíveis</span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-6">
+                        <div class="stat-item">
+                            <span class="stat-number" id="totalVendedores">0</span>
+                            <span class="stat-label">Vendedores Ativos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-container">
+        <!-- Navegação por Abas -->
+        <div class="nav-tabs-container mb-4">
+            <ul class="nav nav-tabs justify-content-center" id="mainTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="lojas-tab" data-bs-toggle="tab" data-bs-target="#lojas-section" type="button" role="tab" aria-controls="lojas-section" aria-selected="true">
+                        <i class="bi bi-shop me-2"></i>Lojas
+                    </button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="produtos-tab" data-bs-toggle="tab" data-bs-target="#produtos-section" type="button" role="tab" aria-controls="produtos-section" aria-selected="false">
+                        <i class="bi bi-box-seam me-2"></i>🔥 Ofertas do Quadrado
+                    </button>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Conteúdo das Abas -->
+        <div class="tab-content" id="mainTabContent">
+            <!-- Aba de Lojas -->
+            <div class="tab-pane fade show active" id="lojas-section" role="tabpanel" aria-labelledby="lojas-tab">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card animate-fade-in">
+                            <div class="form-section">
+                                <h2 class="form-title">
+                                    <i class="bi bi-shop"></i>
+                                    Cadastrar Nova Loja
+                                </h2>
+
+                                <!-- Alert Messages -->
+                                <div id="alertContainer"></div>
+
+                                <form id="lojaForm">
+                            <!-- Nome da Loja -->
+                            <div class="mb-4">
+                                <label for="nome" class="form-label">
+                                    <i class="bi bi-building"></i> Nome da Loja *
+                                </label>
+                                <input type="text" class="form-control" id="nome" name="nome"
+                                       placeholder="Ex: Padaria do João" required>
+                                <div class="form-text">Nome completo da sua loja ou negócio</div>
+                            </div>
+
+                            <!-- Slogan -->
+                            <div class="mb-4">
+                                <label for="slogan" class="form-label">
+                                    <i class="bi bi-quote"></i> Slogan/Apresentação
+                                </label>
+                                <input type="text" class="form-control" id="slogan" name="slogan"
+                                       placeholder="Ex: O melhor pão da cidade!" maxlength="150">
+                                <div class="form-text">Uma frase curta que descreve sua loja (opcional)</div>
+                            </div>
+
+                            <!-- RA -->
+                            <div class="mb-4">
+                                <label for="ra" class="form-label">
+                                    <i class="bi bi-geo-alt"></i> Região Administrativa *
+                                </label>
+                                <select class="form-select" id="ra" name="ra" required>
+                                    <option value="">Selecione uma RA...</option>
+                                    <option value="Plano Piloto">Plano Piloto</option>
+                                    <option value="Asa Sul">Asa Sul</option>
+                                    <option value="Asa Norte">Asa Norte</option>
+                                    <option value="Lago Sul">Lago Sul</option>
+                                    <option value="Lago Norte">Lago Norte</option>
+                                    <option value="Taguatinga">Taguatinga</option>
+                                    <option value="Brazlândia">Brazlândia</option>
+                                    <option value="Sobradinho">Sobradinho</option>
+                                    <option value="Planaltina">Planaltina</option>
+                                    <option value="Paranoá">Paranoá</option>
+                                    <option value="Núcleo Bandeirante">Núcleo Bandeirante</option>
+                                    <option value="Ceilândia">Ceilândia</option>
+                                    <option value="Guará">Guará</option>
+                                    <option value="Cruzeiro">Cruzeiro</option>
+                                    <option value="Samambaia">Samambaia</option>
+                                    <option value="Santa Maria">Santa Maria</option>
+                                    <option value="São Sebastião">São Sebastião</option>
+                                    <option value="Recanto das Emas">Recanto das Emas</option>
+                                    <option value="Riacho Fundo">Riacho Fundo</option>
+                                    <option value="Riacho Fundo II">Riacho Fundo II</option>
+                                    <option value="Sudoeste/Octogonal">Sudoeste/Octogonal</option>
+                                    <option value="Varjão">Varjão</option>
+                                    <option value="Park Way">Park Way</option>
+                                    <option value="SCIA (Estrutural)">SCIA (Estrutural)</option>
+                                    <option value="Sobradinho II">Sobradinho II</option>
+                                    <option value="Jardim Botânico">Jardim Botânico</option>
+                                    <option value="Itapoã">Itapoã</option>
+                                    <option value="SIA">SIA</option>
+                                    <option value="Vincúlus">Vincúlus</option>
+                                    <option value="Fercal">Fercal</option>
+                                    <option value="Arapoanga">Arapoanga</option>
+                                    <option value="Águas Claras">Águas Claras</option>
+                                    <option value="Arniqueira">Arniqueira</option>
+                                </select>
+                                <div class="form-text">Escolha a região administrativa onde sua loja está localizada</div>
+                            </div>
+
+                            <!-- Categoria -->
+                            <div class="mb-4">
+                                <label for="categoria" class="form-label">
+                                    <i class="bi bi-tags"></i> Categoria *
+                                </label>
+                                <select class="form-select" id="categoria" name="categoria" required>
+                                    <option value="">Selecione uma categoria...</option>
+                                    <option value="Comercial">Comercial</option>
+                                    <option value="Hoteleiro">Hoteleiro</option>
+                                    <option value="Alimentação">Alimentação</option>
+                                    <option value="Vestuário">Vestuário</option>
+                                    <option value="Serviços">Serviços</option>
+                                    <option value="Saúde">Saúde</option>
+                                    <option value="Tecnologia">Tecnologia</option>
+                                    <option value="Outros">Outros</option>
+                                </select>
+                                <div class="form-text">Tipo de negócio ou segmento da sua loja</div>
+                            </div>
+
+                            <!-- Setor -->
+                            <div class="mb-4">
+                                <label for="setor" class="form-label">
+                                    <i class="bi bi-diagram-3"></i> Setor
+                                </label>
+                                <select class="form-select" id="setor" name="setor">
+                                    <option value="Comercial">Comercial</option>
+                                    <option value="Hoteleiro">Hoteleiro</option>
+                                    <option value="Residencial">Residencial</option>
+                                    <option value="Misto">Misto</option>
+                                </select>
+                                <div class="form-text">Setor de atuação (opcional)</div>
+                            </div>
+
+                            <!-- Dados do Vendedor -->
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="vendedorNome" class="form-label">
+                                        <i class="bi bi-person"></i> Nome do Vendedor *
+                                    </label>
+                                    <input type="text" class="form-control" id="vendedorNome" name="vendedorNome"
+                                           placeholder="João Silva" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="vendedorEmail" class="form-label">
+                                        <i class="bi bi-envelope"></i> Email *
+                                    </label>
+                                    <input type="email" class="form-control" id="vendedorEmail" name="vendedorEmail"
+                                           placeholder="joao@email.com" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="vendedorTelefone" class="form-label">
+                                        <i class="bi bi-telephone"></i> Telefone *
+                                    </label>
+                                    <input type="tel" class="form-control" id="vendedorTelefone" name="vendedorTelefone"
+                                           placeholder="(61) 98765-4321" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="vendedorWhatsApp" class="form-label">
+                                        <i class="bi bi-whatsapp"></i> WhatsApp *
+                                    </label>
+                                    <input type="tel" class="form-control" id="vendedorWhatsApp" name="vendedorWhatsApp"
+                                           placeholder="(61) 98765-4321" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="vendedorCpf" class="form-label">
+                                        <i class="bi bi-credit-card"></i> CPF *
+                                    </label>
+                                    <input type="text" class="form-control" id="vendedorCpf" name="vendedorCpf"
+                                           placeholder="123.456.789-00" required>
+                                </div>
+                            </div>
+
+                            <!-- Endereço -->
+                            <div class="row">
+                                <div class="col-md-8 mb-4">
+                                    <label for="enderecoRua" class="form-label">
+                                        <i class="bi bi-house"></i> Rua *
+                                    </label>
+                                    <input type="text" class="form-control" id="enderecoRua" name="enderecoRua"
+                                           placeholder="SQS 302" required>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <label for="enderecoNumero" class="form-label">
+                                        <i class="bi bi-hash"></i> Número *
+                                    </label>
+                                    <input type="text" class="form-control" id="enderecoNumero" name="enderecoNumero"
+                                           placeholder="125" required>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <label for="enderecoComplemento" class="form-label">
+                                        <i class="bi bi-house-add"></i> Complemento
+                                    </label>
+                                    <input type="text" class="form-control" id="enderecoComplemento" name="enderecoComplemento"
+                                           placeholder="Bloco A, Loja 5">
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="enderecoLocalizacao" class="form-label">
+                                        <i class="bi bi-geo-alt"></i> Endereço/Localização *
+                                    </label>
+                                    <input type="text" class="form-control" id="enderecoLocalizacao" name="enderecoLocalizacao"
+                                           placeholder="Ex: QI 24, comércio 5, Taguatinga" required>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <label for="enderecoCep" class="form-label">
+                                        <i class="bi bi-mailbox"></i> CEP *
+                                    </label>
+                                    <input type="text" class="form-control" id="enderecoCep" name="enderecoCep"
+                                           placeholder="70232-000" required>
+                                </div>
+                            </div>
+
+                            <!-- Botões -->
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                <button type="button" class="btn btn-danger me-md-2" onclick="limparFormulario()">
+                                    <i class="bi bi-x-circle"></i> Limpar
+                                </button>
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-circle"></i> Cadastrar Loja
+                                </button>
+                            </div>
+
+                            <!-- Loading Spinner -->
+                            <div class="loading-spinner" id="loadingSpinner">
+                                <div class="spinner-border text-primary" role="status">
+                                    <span class="visually-hidden">Carregando...</span>
+                                </div>
+                                <span class="ms-2">Cadastrando loja...</span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Resultados da Busca de Produtos -->
+    <div class="row justify-content-center mt-5" id="resultadosBuscaSection" style="display: none;">
+        <div class="col-lg-10">
+            <div class="card animate-fade-in p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2 class="form-title mb-0">
+                            <i class="bi bi-search me-2"></i> Resultados da Busca
+                        </h2>
+                        <p class="mb-0 text-muted" id="resultadosInfo">Encontramos X produtos para "termo"</p>
+                    </div>
+                    <button class="btn btn-outline-secondary" onclick="fecharResultadosBusca()">
+                        <i class="bi bi-x-lg"></i> Fechar
+                    </button>
+                </div>
+                <div id="resultadosBusca" class="row g-4"></div>
+                <div id="semResultados" class="text-center py-4" style="display: none;">
+                    <i class="bi bi-search text-muted" style="font-size: 3rem;"></i>
+                    <h5 class="text-muted mt-3" id="mensagemSemResultados">Nenhum produto encontrado</h5>
+                    <p class="text-muted" id="sugestaoSemResultados"></p>
+                    <button class="btn btn-primary mt-3" id="btnVerLojasSugeridas" style="display: none;" onclick="verLojasSugeridas()">
+                        <i class="bi bi-shop"></i> Ver Lojas na RA
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vitrine de Produtos em Destaque -->
+    <div class="row justify-content-center mt-5" id="vitrineProdutosSection">
+        <div class="col-lg-10">
+            <div class="card animate-fade-in p-4">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <div>
+                        <h2 class="form-title mb-0">
+                            <i class="bi bi-star-fill me-2"></i> 🔥 Ofertas do Quadrado em Destaque
+                        </h2>
+                        <p class="mb-0 text-muted">Descubra as melhores ofertas das lojas de Brasília</p>
+                    </div>
+                    <button class="btn btn-outline-primary" onclick="verTodosProdutos()">
+                        <i class="bi bi-grid"></i> Ver Todos
+                    </button>
+                </div>
+                <div id="vitrineProdutos" class="row g-4">
+                    <!-- Produtos serão carregados dinamicamente -->
+                </div>
+                <div id="vitrineVazia" class="text-center py-4" style="display: none;">
+                    <i class="bi bi-box-seam text-muted" style="font-size: 3rem;"></i>
+                    <h5 class="text-muted mt-3">Nenhum produto disponível</h5>
+                    <p class="text-muted">Os produtos aparecerão aqui quando as lojas começarem a cadastrar.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- Loja Vitrine -->
+        <div class="row justify-content-center mt-5 loja-vitrine-section">
+            <div class="col-lg-10">
+                <div class="card animate-fade-in p-4">
+                    <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between mb-4 gap-3">
+                        <div>
+                            <h2 class="form-title mb-0">Vitrine de Lojas</h2>
+                            <p class="mb-0 text-muted">Filtre por Região Administrativa e veja as lojas cadastradas.</p>
+                            <p class="mb-0 text-success">Lojas exibidas: <strong id="lojasVisiveisCount">0</strong></p>
+                        </div>
+                        <div class="w-100 w-md-50">
+                            <label for="filtroPesquisa" class="form-label mb-2">Pesquisar lojas</label>
+                            <input type="search" id="filtroPesquisa" class="form-control mb-3" placeholder="Digite nome ou RA da loja...">
+                            <label for="filtroRa" class="form-label mb-2">Buscar por RA</label>
+                            <select class="form-select" id="filtroRa">
+                                <option value="">Todas as RAs</option>
+                                <option value="Plano Piloto">Plano Piloto</option>
+                                <option value="Asa Sul">Asa Sul</option>
+                                <option value="Asa Norte">Asa Norte</option>
+                                <option value="Lago Sul">Lago Sul</option>
+                                <option value="Lago Norte">Lago Norte</option>
+                                <option value="Taguatinga">Taguatinga</option>
+                                <option value="Brazlândia">Brazlândia</option>
+                                <option value="Sobradinho">Sobradinho</option>
+                                <option value="Planaltina">Planaltina</option>
+                                <option value="Paranoá">Paranoá</option>
+                                <option value="Núcleo Bandeirante">Núcleo Bandeirante</option>
+                                <option value="Ceilândia">Ceilândia</option>
+                                <option value="Guará">Guará</option>
+                                <option value="Cruzeiro">Cruzeiro</option>
+                                <option value="Samambaia">Samambaia</option>
+                                <option value="Santa Maria">Santa Maria</option>
+                                <option value="São Sebastião">São Sebastião</option>
+                                <option value="Recanto das Emas">Recanto das Emas</option>
+                                <option value="Riacho Fundo">Riacho Fundo</option>
+                                <option value="Riacho Fundo II">Riacho Fundo II</option>
+                                <option value="Sudoeste/Octogonal">Sudoeste/Octogonal</option>
+                                <option value="Varjão">Varjão</option>
+                                <option value="Park Way">Park Way</option>
+                                <option value="SCIA (Estrutural)">SCIA (Estrutural)</option>
+                                <option value="Sobradinho II">Sobradinho II</option>
+                                <option value="Jardim Botânico">Jardim Botânico</option>
+                                <option value="Itapoã">Itapoã</option>
+                                <option value="SIA">SIA</option>
+                                <option value="Vincúlus">Vincúlus</option>
+                                <option value="Fercal">Fercal</option>
+                                <option value="Arapoanga">Arapoanga</option>
+                                <option value="Águas Claras">Águas Claras</option>
+                                <option value="Arniqueira">Arniqueira</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="lojasVitrine" class="row g-4"></div>
+                    <div id="semLojas" class="text-center text-muted mt-4" style="display:none;">Nenhuma loja encontrada para a RA selecionada.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+            </div>
+
+            <!-- Aba de Produtos -->
+            <div class="tab-pane fade" id="produtos-section" role="tabpanel" aria-labelledby="produtos-tab">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <div class="card animate-fade-in">
+                            <div class="form-section">
+                                <h2 class="form-title">
+                                    <i class="bi bi-box-seam"></i>
+                                    Lançar Nova Oferta
+                                </h2>
+
+                                <!-- Alert Messages para Produtos -->
+                                <div id="alertContainerProdutos"></div>
+
+                                <form id="produtoForm">
+                                    <!-- Selecionar Loja -->
+                                    <div class="mb-4">
+                                        <label for="produtoLoja" class="form-label">
+                                            <i class="bi bi-shop"></i> Loja *
+                                        </label>
+                                        <select class="form-select" id="produtoLoja" name="lojaId" required>
+                                            <option value="">Selecione uma loja...</option>
+                                            <!-- Opções serão carregadas dinamicamente -->
+                                        </select>
+                                        <div class="form-text">Escolha a loja onde este produto será vendido</div>
+                                    </div>
+<!-- Campo: Nome do Produto -->
+<div class="mb-4">
+    <label class="form-label">
+        <i class="bi bi-tag"></i> Nome do Produto
+    </label>
+    <input type="text" class="form-control" name="nome" placeholder="Ex: Arroz Tio João 5kg" required>
+</div>
+
+<!-- Campo: Preço -->
+<div class="mb-4">
+    <label class="form-label">
+        <i class="bi bi-cash-stack"></i> Preço da Oferta (R$)
+    </label>
+    <input type="number" class="form-control" name="preco" step="0.01" placeholder="0.00" required>
+</div>
+
+<!-- Botão de Enviar -->
+<button type="submit" class="btn btn-primary w-100 py-3">
+    <i class="bi bi-cloud-arrow-up"></i> Salvar Oferta Agora
+</button>
+
+                                    <!-- Nome da Oferta -->
+                                    <div class="mb-4">
+                                        <label for="produtoNome" class="form-label">
+                                            <i class="bi bi-tag"></i> Nome da Oferta *
+                                        </label>
+                                        <input type="text" class="form-control" id="produtoNome" name="nome"
+                                               placeholder="Ex: Café Expresso Premium" required>
+                                        <div class="form-text">Deixe um nome curto e direto para esta oferta</div>
+                                    </div>
+
+                                    <!-- Preço da Oferta / Preço Original -->
+                                    <div class="row g-3 mb-4">
+                                        <div class="col-md-6">
+                                            <label for="produtoPrecoOriginal" class="form-label">
+                                                <i class="bi bi-cash-stack"></i> Preço Original (R$)
+                                            </label>
+                                            <input type="number" class="form-control" id="produtoPrecoOriginal" name="precoOriginal"
+                                                   placeholder="0.00" step="0.01" min="0">
+                                            <div class="form-text">Valor antes da oferta</div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label for="produtoPreco" class="form-label">
+                                                <i class="bi bi-cash"></i> Preço da Oferta (R$) *
+                                            </label>
+                                            <input type="number" class="form-control" id="produtoPreco" name="preco"
+                                                   placeholder="0.00" step="0.01" min="0" required>
+                                            <div class="form-text">Preço promocional em reais</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- URL da Imagem e Frete Grátis -->
+                                    <div class="row g-3 mb-4 align-items-end">
+                                        <div class="col-md-8">
+                                            <label for="produtoImagem" class="form-label">
+                                                <i class="bi bi-image"></i> URL da Imagem
+                                            </label>
+                                            <input type="url" class="form-control" id="produtoImagem" name="imagem"
+                                                   placeholder="https://exemplo.com/imagem.jpg">
+                                            <div class="form-text">Link para imagem da oferta (opcional)</div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-check mt-md-4 pt-md-1">
+                                                <input class="form-check-input" type="checkbox" id="produtoFreteGratis" name="freteGratis">
+                                                <label class="form-check-label" for="produtoFreteGratis">
+                                                    <i class="bi bi-truck"></i> Frete Grátis
+                                                </label>
+                                            </div>
+                                            <div class="form-text">Entrega sem custo extra na RA</div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Botões -->
+                                    <div class="d-grid gap-2 d-md-flex justify-content-md-end mt-4">
+                                        <button type="button" class="btn btn-danger me-md-2" onclick="limparFormularioProduto()">
+                                            <i class="bi bi-x-circle"></i> Limpar
+                                        </button>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="bi bi-check-circle"></i> Lançar Oferta
+                                        </button>
+                                    </div>
+
+                                    <!-- Loading Spinner -->
+                                    <div class="loading-spinner" id="loadingSpinnerProduto" style="display: none;">
+                                        <div class="spinner-border text-primary" role="status">
+                                            <span class="visually-hidden">Carregando...</span>
+                                        </div>
+                                        <span class="ms-2">Lançando oferta...</span>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    <!-- Modal do Catálogo de Produtos -->
+    <div class="modal fade" id="catalogoModal" tabindex="-1" aria-labelledby="catalogoModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="catalogoModalLabel">
+                        <i class="bi bi-shop me-2"></i> Catálogo de 🔥 Ofertas do Quadrado
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="catalogoLoading" class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Carregando...</span>
+                        </div>
+                        <p class="mt-2">Carregando produtos...</p>
+                    </div>
+                    <div id="catalogoProdutos" class="row g-3" style="display: none;"></div>
+                    <div id="catalogoVazio" class="text-center py-4" style="display: none;">
+                        <i class="bi bi-inbox text-muted" style="font-size: 3rem;"></i>
+                        <h5 class="text-muted mt-3">Nenhum produto cadastrado</h5>
+                        <p class="text-muted">Esta loja ainda não possui produtos no catálogo.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Como Chegar -->
+    <div class="modal fade" id="modalComoChegar" tabindex="-1" aria-labelledby="modalComoChegarLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalComoChegarLabel">Nome da Loja</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="map-container mb-3">
+                        <iframe id="mapaEmbed" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                    <div class="endereco-completo">
+                        <h6>Endereço:</h6>
+                        <p id="enderecoTexto" class="mb-0"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info" id="btnAbrirGps">
+                        <i class="bi bi-geo-alt me-2"></i>Como Chegar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Mercado 61 - Brasília. Desenvolvido com ❤️ para conectar vendedores locais.</p>
+            <p>
+                <a href="https://github.com" target="_blank"><i class="bi bi-github"></i> GitHub</a> |
+                <a href="https://www.mongodb.com" target="_blank"><i class="bi bi-database"></i> MongoDB</a> |
+                <a href="https://nodejs.org" target="_blank"><i class="bi bi-node-plus"></i> Node.js</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- JavaScript -->
+    <script>
+        // API Base URL
+        const API_BASE = 'http://localhost:3000/api';
+
+        // Elementos DOM
+        const form = document.getElementById('lojaForm');
+        const alertContainer = document.getElementById('alertContainer');
+        const loadingSpinner = document.getElementById('loadingSpinner');
+        const lojasVitrine = document.getElementById('lojasVitrine');
+        const filtroPesquisa = document.getElementById('filtroPesquisa');
+        const filtroRa = document.getElementById('filtroRa');
+        const buscaPrincipal = document.getElementById('buscaPrincipal');
+        const filtroRaBusca = document.getElementById('filtroRaBusca');
+        const btnBuscar = document.getElementById('btnBuscar');
+        const resultadosBuscaSection = document.getElementById('resultadosBuscaSection');
+        const resultadosBusca = document.getElementById('resultadosBusca');
+        const resultadosInfo = document.getElementById('resultadosInfo');
+        const semResultados = document.getElementById('semResultados');
+        const mensagemSemResultados = document.getElementById('mensagemSemResultados');
+        const sugestaoSemResultados = document.getElementById('sugestaoSemResultados');
+        const btnVerLojasSugeridas = document.getElementById('btnVerLojasSugeridas');
+
+        // Elementos para produtos
+        const produtoForm = document.getElementById('produtoForm');
+        const alertContainerProdutos = document.getElementById('alertContainerProdutos');
+        const loadingSpinnerProduto = document.getElementById('loadingSpinnerProduto');
+        const produtoLoja = document.getElementById('produtoLoja');
+
+        // Elementos para vitrine de produtos
+        const vitrineProdutosSection = document.getElementById('vitrineProdutosSection');
+        const vitrineProdutos = document.getElementById('vitrineProdutos');
+        const vitrineVazia = document.getElementById('vitrineVazia');
+        const semLojas = document.getElementById('semLojas');
+        const lojasVisiveisCount = document.getElementById('lojasVisiveisCount');
+        let todasLojas = [];
+
+        // Máscaras de input
+        function aplicarMascaraCPF(input) {
+            let valor = input.value.replace(/\D/g, '');
+            if (valor.length <= 11) {
+                valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+                valor = valor.replace(/(\d{3})(\d)/, '$1.$2');
+                valor = valor.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+            }
+            input.value = valor;
+        }
+
+        function aplicarMascaraTelefone(input) {
+            let valor = input.value.replace(/\D/g, '');
+            if (valor.length <= 11) {
+                valor = valor.replace(/^(\d{2})(\d)/, '($1) $2');
+                valor = valor.replace(/(\d{4,5})(\d{4})$/, '$1-$2');
+            }
+            input.value = valor;
+        }
+
+        function aplicarMascaraCEP(input) {
+            let valor = input.value.replace(/\D/g, '');
+            if (valor.length <= 8) {
+                valor = valor.replace(/(\d{5})(\d)/, '$1-$2');
+            }
+            input.value = valor;
+        }
+
+        // Aplicar máscaras nos inputs
+        document.getElementById('vendedorCpf').addEventListener('input', function() {
+            aplicarMascaraCPF(this);
+        });
+
+        document.getElementById('vendedorTelefone').addEventListener('input', function() {
+            aplicarMascaraTelefone(this);
+        });
+
+        document.getElementById('vendedorWhatsApp').addEventListener('input', function() {
+            aplicarMascaraTelefone(this);
+        });
+
+        document.getElementById('enderecoCep').addEventListener('input', function() {
+            aplicarMascaraCEP(this);
+        });
+
+        // Função para mostrar alertas
+        function mostrarAlerta(tipo, mensagem, titulo = '') {
+            const alertHTML = `
+                <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+                    <strong>${titulo}</strong> ${mensagem}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            alertContainer.innerHTML = alertHTML;
+
+            // Auto-remover após 5 segundos
+            setTimeout(() => {
+                const alert = alertContainer.querySelector('.alert');
+                if (alert) {
+                    alert.remove();
+                }
+            }, 5000);
+        }
+
+        // Função para mostrar alertas de produtos
+        function mostrarAlertaProduto(tipo, mensagem, titulo = '') {
+            const alertHTML = `
+                <div class="alert alert-${tipo} alert-dismissible fade show" role="alert">
+                    <strong>${titulo}</strong> ${mensagem}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                </div>
+            `;
+            alertContainerProdutos.innerHTML = alertHTML;
+
+            // Auto-remover após 5 segundos
+            setTimeout(() => {
+                const alert = alertContainerProdutos.querySelector('.alert');
+                if (alert) {
+                    alert.remove();
+                }
+            }, 5000);
+        }
+
+        // Função para mostrar/esconder loading
+        function toggleLoading(mostrar) {
+            loadingSpinner.style.display = mostrar ? 'flex' : 'none';
+        }
+
+        // Função para mostrar/esconder loading de produto
+        function toggleLoadingProduto(mostrar) {
+            loadingSpinnerProduto.style.display = mostrar ? 'flex' : 'none';
+        }
+
+        // Função para limpar formulário
+        function limparFormulario() {
+            form.reset();
+            alertContainer.innerHTML = '';
+        }
+
+        // Função para limpar formulário de produto
+        function limparFormularioProduto() {
+            produtoForm.reset();
+            alertContainerProdutos.innerHTML = '';
+            // Resetar checkbox de frete grátis
+            document.getElementById('produtoFreteGratis').checked = false;
+        }
+
+        // Formata número WhatsApp para URL wa.me
+        function formatarWhatsappParaWaMe(numero) {
+            if (!numero) return '';
+            let apenasNumeros = numero.replace(/\D/g, '');
+            if (apenasNumeros.length === 8 || apenasNumeros.length === 9) {
+                apenasNumeros = `61${apenasNumeros}`;
+            }
+            if (apenasNumeros.startsWith('0')) {
+                apenasNumeros = apenasNumeros.replace(/^0+/, '');
+            }
+            if (!apenasNumeros.startsWith('55')) {
+                apenasNumeros = `55${apenasNumeros}`;
+            }
+            return apenasNumeros;
+        }
+
+        // Função para abrir WhatsApp
+        function abrirWhatsApp(whatsapp) {
+            const numeroFormatado = formatarWhatsappParaWaMe(whatsapp);
+            if (numeroFormatado) {
+                window.open(`https://wa.me/${numeroFormatado}`, '_blank');
+            }
+        }
+
+        // Função para remover loja com confirmação
+        async function removerLoja(lojaId, nome) {
+            const confirmado = window.confirm(`Tem certeza que deseja remover esta loja do Mercado 61?\n\n${nome}`);
+            if (!confirmado) {
+                return;
+            }
+
+            try {
+                const response = await fetch(`${API_BASE}/lojas/${lojaId}`, {
+                    method: 'DELETE'
+                });
+                const data = await response.json();
+
+                if (response.ok && data.sucesso) {
+                    mostrarAlerta('success', data.mensagem, '✅ Removido!');
+                    carregarLojas();
+                } else {
+                    mostrarAlerta('danger', data.mensagem || 'Erro ao remover loja.', '❌ Erro:');
+                }
+            } catch (erro) {
+                mostrarAlerta('danger', 'Falha ao remover loja. Tente novamente.', '❌ Erro:');
+                console.error('Erro ao remover loja:', erro);
+            }
+        }
+
+        // Função para abrir modal do mapa
+        function abrirMapa(lat, lng, nome, endereco) {
+            // Configurar título
+            document.getElementById('modalComoChegarLabel').textContent = nome;
+
+            const query = encodeURIComponent(`${nome} ${endereco}`);
+
+            // Configurar mapa embed usando busca por nome + endereço
+            const mapaEmbed = document.getElementById('mapaEmbed');
+            mapaEmbed.src = `https://maps.google.com/maps?q=${query}&output=embed`;
+
+            // Configurar endereço
+            document.getElementById('enderecoTexto').textContent = endereco;
+
+            // Configurar botão GPS
+            const btnGps = document.getElementById('btnAbrirGps');
+            btnGps.onclick = function() {
+                window.open(`https://google.com/search?q=${query}`, '_blank');
+            };
+
+            // Abrir modal
+            const modal = new bootstrap.Modal(document.getElementById('modalComoChegar'));
+            modal.show();
+        }
+
+        // Função para buscar produtos
+        async function buscarProdutos() {
+            const termo = buscaPrincipal.value.trim();
+            if (!termo) {
+                mostrarAlerta('warning', 'Digite um termo para buscar produtos.', '⚠️ Busca vazia:');
+                return;
+            }
+
+            try {
+                // Esconder formulários e vitrine de lojas
+                document.getElementById('lojas-section').style.display = 'none';
+                document.getElementById('produtos-section').style.display = 'none';
+                document.querySelector('.loja-vitrine-section').style.display = 'none';
+                resultadosBuscaSection.style.display = 'block';
+
+                resultadosBusca.innerHTML = '<div class="col-12 text-center py-4"><div class="spinner-border text-primary" role="status"><span class="visually-hidden">Buscando...</span></div><p class="mt-2">Buscando produtos...</p></div>';
+                semResultados.style.display = 'none';
+
+                const raFiltro = filtroRaBusca.value;
+                const url = raFiltro
+                    ? `${API_BASE}/produtos/buscar/${encodeURIComponent(termo)}?ra=${encodeURIComponent(raFiltro)}`
+                    : `${API_BASE}/produtos/buscar/${encodeURIComponent(termo)}`;
+
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error('Falha na busca');
+                }
+
+                const data = await response.json();
+
+                if (data.sucesso && data.produtos && data.produtos.length > 0) {
+                    renderizarResultadosBusca(data);
+                } else {
+                    mostrarSemResultados(termo, raFiltro);
+                }
+
+                // Scroll para resultados
+                resultadosBuscaSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            } catch (error) {
+                console.error('Erro na busca:', error);
+                mostrarAlerta('danger', 'Erro ao buscar produtos. Tente novamente.', '❌ Erro:');
+                fecharResultadosBusca();
+            }
+        }
+
+        // Função para renderizar resultados da busca
+        function renderizarResultadosBusca(data) {
+            resultadosBusca.innerHTML = '';
+            resultadosInfo.textContent = `Encontramos ${data.total} produto${data.total !== 1 ? 's' : ''} para "${data.termo}"${data.raFiltro ? ` em ${data.raFiltro}` : ''}`;
+
+            data.produtos.forEach(produto => {
+                const precoFormatado = new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }).format(produto.preco);
+
+                const imagemSrc = produto.imagem || 'https://via.placeholder.com/300x200/6c757d/ffffff?text=Produto';
+
+                // Dados da loja
+                const loja = produto.loja;
+                const enderecoCompletoBusca = `${loja.nome} ${loja.endereco.rua}, ${loja.endereco.numero}${loja.endereco.complemento ? ', ' + loja.endereco.complemento : ''} - ${loja.ra}, Brasília-DF`;
+                const googleLink = encodeURIComponent(enderecoCompletoBusca);
+
+                const produtoCard = document.createElement('div');
+                produtoCard.className = 'col-md-6 col-lg-4';
+                produtoCard.innerHTML = `
+                    <div class="card h-100 border-0 shadow-sm produto-busca-card">
+                        <img src="${imagemSrc}" class="card-img-top" alt="${produto.nome}" style="height: 180px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title text-truncate">${produto.nome}</h6>
+                            <p class="card-text text-muted small mb-2">${produto.descricao}</p>
+
+                            <div class="loja-info mb-3 p-2 bg-light rounded">
+                                <div class="d-flex justify-content-between align-items-start">
+                                    <div class="flex-grow-1">
+                                        <small class="text-muted">Loja:</small>
+                                        <strong class="d-block">${loja.nome}</strong>
+                                        <small class="text-muted">
+                                            <i class="bi bi-geo-alt-fill"></i> ${loja.ra}
+                                        </small>
+                                    </div>
+                                    <a href="https://google.com/search?q=${googleLink}" target="_blank" rel="noopener noreferrer"
+                                       class="btn btn-sm btn-outline-primary ms-2" title="Ver no mapa">
+                                        <i class="bi bi-geo-alt"></i>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="mt-auto">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="h6 text-success mb-0">${precoFormatado}</span>
+                                    <small class="text-muted">${produto.categoria}</small>
+                                </div>
+                                <button onclick="pedirProdutoBusca('${produto._id}', '${produto.nome}', '${precoFormatado}', '${loja._id}')"
+                                        class="btn btn-success w-100">
+                                    <i class="bi bi-whatsapp me-1"></i> Pedir no WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                resultadosBusca.appendChild(produtoCard);
+            });
+        }
+
+        // Função para mostrar mensagem quando não há resultados
+        function mostrarSemResultados(termo, raFiltro) {
+            resultadosBusca.innerHTML = '';
+            mensagemSemResultados.textContent = `Nenhum produto encontrado para "${termo}"`;
+
+            if (raFiltro) {
+                sugestaoSemResultados.textContent = `Não encontramos esse produto em ${raFiltro}. Que tal ver outras lojas nesta região?`;
+                btnVerLojasSugeridas.style.display = 'inline-block';
+                btnVerLojasSugeridas.setAttribute('data-ra', raFiltro);
+            } else {
+                sugestaoSemResultados.textContent = 'Tente buscar por outros termos ou selecione uma RA específica para refinar sua busca.';
+                btnVerLojasSugeridas.style.display = 'none';
+            }
+
+            semResultados.style.display = 'block';
+        }
+
+        // Função para fechar resultados da busca
+        function fecharResultadosBusca() {
+            resultadosBuscaSection.style.display = 'none';
+            document.getElementById('lojas-section').style.display = 'block';
+            document.querySelector('.loja-vitrine-section').style.display = 'block';
+            buscaPrincipal.value = '';
+            filtroRaBusca.value = '';
+
+            // Verificar qual aba está ativa e mostrar a seção correspondente
+            const activeTab = document.querySelector('.nav-tabs .nav-link.active');
+            if (activeTab && activeTab.id === 'produtos-tab') {
+                document.getElementById('produtos-section').style.display = 'block';
+            }
+        }
+
+        // Função para ver lojas sugeridas
+        function verLojasSugeridas() {
+            const ra = btnVerLojasSugeridas.getAttribute('data-ra');
+            if (ra) {
+                filtroRa.value = ra;
+                filtrarLojas();
+                fecharResultadosBusca();
+
+                // Scroll para vitrine
+                document.querySelector('.loja-vitrine-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Função para pedir produto da busca via WhatsApp
+        async function pedirProdutoBusca(produtoId, nomeProduto, preco, lojaId) {
+            try {
+                // Buscar dados da loja
+                const response = await fetch(`${API_BASE}/lojas/${lojaId}`);
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar dados da loja');
+                }
+
+                const loja = await response.json();
+                const whatsappLink = formatarWhatsappParaWaMe(loja.vendedor.whatsapp);
+                const mensagem = encodeURIComponent(`Olá! Vi o produto "${nomeProduto}" no valor de ${preco} no Mercado 61. Gostaria de fazer um pedido!`);
+
+                if (whatsappLink) {
+                    window.open(`https://wa.me/${whatsappLink}?text=${mensagem}`, '_blank', 'noopener,noreferrer');
+                } else {
+                    mostrarAlerta('warning', 'WhatsApp da loja não disponível no momento.', '⚠️ Aviso:');
+                }
+            } catch (error) {
+                console.error('Erro ao buscar dados da loja:', error);
+                mostrarAlerta('danger', 'Erro ao abrir WhatsApp. Tente novamente.', '❌ Erro:');
+            }
+        }
+
+        // Função para carregar vitrine de produtos em destaque
+        async function carregarVitrineProdutos() {
+            try {
+                const response = await fetch(`${API_BASE}/produtos/destaques?limite=12`);
+                if (!response.ok) {
+                    throw new Error('Falha ao carregar produtos em destaque');
+                }
+
+                const data = await response.json();
+
+                if (data.sucesso && data.produtos && data.produtos.length > 0) {
+                    renderizarVitrineProdutos(data.produtos);
+                    vitrineProdutosSection.style.display = 'block';
+                } else {
+                    vitrineVazia.style.display = 'block';
+                    vitrineProdutosSection.style.display = 'block';
+                }
+            } catch (error) {
+                console.error('Erro ao carregar vitrine de produtos:', error);
+                vitrineVazia.style.display = 'block';
+                vitrineProdutosSection.style.display = 'block';
+            }
+        }
+
+        // Função para renderizar vitrine de produtos
+        function renderizarVitrineProdutos(produtos) {
+            vitrineProdutos.innerHTML = '';
+            vitrineVazia.style.display = 'none';
+
+            produtos.forEach(produto => {
+                const precoFormatado = new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }).format(produto.preco);
+
+                const imagemSrc = produto.imagem || 'https://via.placeholder.com/300x200/6c757d/ffffff?text=Produto';
+
+                // Dados da loja
+                const loja = produto.loja;
+                const enderecoLocalizacao = loja.endereco?.localizacao || `${loja.endereco.rua} ${loja.endereco.numero}`;
+
+                const produtoCard = document.createElement('div');
+                produtoCard.className = 'col-md-6 col-lg-3';
+                produtoCard.innerHTML = `
+                    <div class="card h-100 border-0 shadow-sm produto-destaque-card">
+                        ${produto.freteGratis ? '<div class="badge-frete-gratis">🚚 Frete Grátis</div>' : ''}
+                        <img src="${imagemSrc}" class="card-img-top" alt="${produto.nome}" style="height: 180px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title text-truncate">${produto.nome}</h6>
+                            <p class="card-text text-muted small mb-2">${produto.descricao.substring(0, 50)}${produto.descricao.length > 50 ? '...' : ''}</p>
+
+                            <div class="loja-info-vitrine mb-2">
+                                <small class="text-muted">
+                                    <i class="bi bi-shop"></i> ${loja.nome}
+                                </small>
+                            </div>
+
+                            <div class="mt-auto">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="h6 text-success mb-0">${precoFormatado}</span>
+                                    <small class="text-muted">${produto.categoria}</small>
+                                </div>
+                                <button onclick="pedirProdutoVitrine('${produto._id}', '${produto.nome}', '${precoFormatado}', '${loja._id}')"
+                                        class="btn btn-success w-100 btn-sm">
+                                    <i class="bi bi-whatsapp me-1"></i> Pedir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                vitrineProdutos.appendChild(produtoCard);
+            });
+        }
+
+        // Função para pedir produto da vitrine via WhatsApp
+        async function pedirProdutoVitrine(produtoId, nomeProduto, preco, lojaId) {
+            try {
+                // Buscar dados da loja
+                const response = await fetch(`${API_BASE}/lojas/${lojaId}`);
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar dados da loja');
+                }
+
+                const loja = await response.json();
+                const whatsappLink = formatarWhatsappParaWaMe(loja.vendedor.whatsapp);
+                const mensagem = encodeURIComponent(`Olá! Vi o produto "${nomeProduto}" no valor de ${preco} na vitrine do Mercado 61. Gostaria de fazer um pedido!`);
+
+                if (whatsappLink) {
+                    window.open(`https://wa.me/${whatsappLink}?text=${mensagem}`, '_blank', 'noopener,noreferrer');
+                } else {
+                    mostrarAlerta('warning', 'WhatsApp da loja não disponível no momento.', '⚠️ Aviso:');
+                }
+            } catch (error) {
+                console.error('Erro ao buscar dados da loja:', error);
+                mostrarAlerta('danger', 'Erro ao abrir WhatsApp. Tente novamente.', '❌ Erro:');
+            }
+        }
+
+        // Função para ver todos os produtos (abre busca vazia)
+        function verTodosProdutos() {
+            buscaPrincipal.value = '';
+            filtroRaBusca.value = '';
+            buscarProdutos();
+        }
+
+        // Renderiza cards de loja na vitrine
+        function renderizarLojas(lojas) {
+            lojasVitrine.innerHTML = '';
+            lojasVisiveisCount.textContent = lojas.length;
+            if (!lojas.length) {
+                semLojas.style.display = 'block';
+                return;
+            }
+            semLojas.style.display = 'none';
+
+            lojas.forEach(loja => {
+                const whatsappLink = formatarWhatsappParaWaMe(loja.vendedor.whatsapp);
+                const mensagemPronta = encodeURIComponent('Olá, vi sua loja no Mercado 61 e gostaria de saber mais!');
+                const botaoWhatsApp = whatsappLink
+                    ? `<a href="https://wa.me/${whatsappLink}?text=${mensagemPronta}" target="_blank" rel="noopener noreferrer" class="btn btn-success btn-lg w-100">
+                            <i class="bi bi-whatsapp me-2"></i> Chamar no Zap
+                        </a>`
+                    : `<button class="btn btn-secondary w-100" disabled>WhatsApp não disponível</button>`;
+
+                const enderecoCompleto = `${loja.endereco.rua}, ${loja.endereco.numero}${loja.endereco.complemento ? ', ' + loja.endereco.complemento : ''} - ${loja.ra}, Brasília-DF`;
+                const googleLink = encodeURIComponent(`${loja.nome} ${enderecoCompleto}`);
+                const botaoMapa = enderecoCompleto
+                    ? `<a href="https://google.com/search?q=${googleLink}" target="_blank" rel="noopener noreferrer" class="btn btn-maps btn-lg w-100 mb-3">
+                            <i class="bi bi-geo-alt-fill me-2"></i> Ver no Mapa
+                        </a>`
+                    : '';
+
+                // Determinar cor da badge de categoria
+                let badgeClass = 'badge-categoria-servicos';
+                const categoriaLower = loja.categoria.toLowerCase();
+                if (categoriaLower === 'moda') badgeClass = 'badge-categoria-moda';
+                else if (categoriaLower === 'eletrônicos') badgeClass = 'badge-categoria-eletronicos';
+                else if (categoriaLower === 'pet') badgeClass = 'badge-categoria-pet';
+                else if (categoriaLower === 'serviços') badgeClass = 'badge-categoria-servicos';
+
+                const card = document.createElement('div');
+                card.className = 'col-md-6 col-lg-4';
+                card.innerHTML = `
+                    <div class="card loja-card h-100 border-0">
+                        <div class="card-body d-flex flex-column">
+                            <div class="text-center mb-3">
+                                <h5 class="card-title mb-1" style="font-weight: 700; color: var(--primary-color);">${loja.nome}</h5>
+                                ${loja.slogan ? `<p class="text-muted small mb-3">${loja.slogan}</p>` : ''}
+                            </div>
+                            <div class="info-icons mb-4">
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="me-2">📍</span>
+                                    <span>${loja.ra}</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="me-2">👟</span>
+                                    <span>${loja.categoria}</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="me-2">🕒</span>
+                                    <span>Sempre Aberto</span>
+                                </div>
+                                <div class="d-flex align-items-center mb-2">
+                                    <span class="me-2">📦</span>
+                                    <span>Retirada e Entrega</span>
+                                </div>
+                            </div>
+                            <div class="mt-auto d-flex gap-2 flex-column">
+                                <div class="d-flex gap-2">
+                                    <button onclick="abrirWhatsApp('${loja.vendedor.whatsapp}')" class="btn btn-success flex-fill">
+                                        <i class="bi bi-whatsapp me-1"></i> WhatsApp
+                                    </button>
+                                    <button onclick="abrirMapa('${loja.endereco.latitude}', '${loja.endereco.longitude}', '${loja.nome.replace(/'/g, "\\'")}', '${enderecoCompleto.replace(/'/g, "\\'")}')" class="btn btn-info flex-fill">
+                                        <i class="bi bi-geo-alt me-1"></i> Como Chegar
+                                    </button>
+                                </div>
+                                <button onclick="removerLoja('${loja._id}', '${loja.nome.replace(/'/g, "\\'")}')" class="btn btn-outline-danger btn-sm w-100">
+                                    <i class="bi bi-trash me-2"></i> Remover Loja
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                lojasVitrine.appendChild(card);
+            });
+        }
+
+        // Carrega todas as lojas e atualiza a vitrine
+        async function carregarLojas() {
+            try {
+                const response = await fetch(`${API_BASE}/lojas`);
+                if (!response.ok) {
+                    throw new Error('Falha ao carregar lojas');
+                }
+                const data = await response.json();
+                todasLojas = data.lojas || [];
+                atualizarEstatisticas();
+                renderizarLojas(todasLojas);
+                carregarLojasNoSelect(); // Carregar também no select de produtos
+            } catch (error) {
+                console.error('Erro ao carregar lojas:', error);
+                mostrarAlerta('danger', 'Erro ao carregar a lista de lojas.', '❌ Erro:');
+            }
+        }
+
+        // Carrega lojas no select de produtos
+        function carregarLojasNoSelect() {
+            produtoLoja.innerHTML = '<option value="">Selecione uma loja...</option>';
+            todasLojas.forEach(loja => {
+                const option = document.createElement('option');
+                option.value = loja._id;
+                option.textContent = `${loja.nome} - ${loja.ra}`;
+                produtoLoja.appendChild(option);
+            });
+        }
+
+        // Variável global para armazenar categoria selecionada
+        let categoriaSelecionada = '';
+
+        // Função para filtrar por categoria
+        function filtrarPorCategoria(categoria) {
+            categoriaSelecionada = categoria;
+
+            // Atualizar botões ativos
+            document.querySelectorAll('.categoria-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-categoria') === categoria) {
+                    btn.classList.add('active');
+                }
+            });
+
+            // Aplicar filtro
+            filtrarLojas();
+        }
+
+        // Filtrar lojas pela pesquisa de texto, RA ou categoria selecionada
+        function filtrarLojas() {
+            const raSelecionada = filtroRa.value;
+            const termoPesquisa = filtroPesquisa.value.trim().toLowerCase();
+
+            const lojasFiltradas = todasLojas.filter(loja => {
+                const nomeLower = loja.nome.toLowerCase();
+                const raLower = loja.ra.toLowerCase();
+                const categoriaLower = loja.categoria.toLowerCase();
+                const pesquisaValida = termoPesquisa
+                    ? nomeLower.includes(termoPesquisa) || raLower.includes(termoPesquisa)
+                    : true;
+                const raValida = raSelecionada ? loja.ra === raSelecionada : true;
+                const categoriaValida = categoriaSelecionada
+                    ? categoriaLower === categoriaSelecionada.toLowerCase()
+                    : true;
+                return pesquisaValida && raValida && categoriaValida;
+            });
+
+            renderizarLojas(lojasFiltradas);
+        }
+
+        // Função para obter coordenadas da RA (simulado)
+        async function obterCoordenadasRA(ra) {
+            try {
+                const response = await fetch(`${API_BASE}/regioes/${encodeURIComponent(ra)}/coordenadas`);
+                if (response.ok) {
+                    const data = await response.json();
+                    return data.coordenadas;
+                }
+            } catch (error) {
+                console.error('Erro ao obter coordenadas:', error);
+            }
+            return { latitude: -15.7942, longitude: -47.8822 }; // Brasília padrão
+        }
+
+        // Variável global para armazenar dados da loja atual no catálogo
+        let lojaAtualCatalogo = null;
+
+        // Função para ver catálogo de produtos da loja
+        async function verCatalogo(lojaId, nomeLoja) {
+            try {
+                // Atualizar título do modal
+                document.getElementById('catalogoModalLabel').innerHTML = `<i class="bi bi-shop me-2"></i> Catálogo - ${nomeLoja}`;
+
+                // Mostrar modal e loading
+                const modal = new bootstrap.Modal(document.getElementById('catalogoModal'));
+                modal.show();
+
+                document.getElementById('catalogoLoading').style.display = 'block';
+                document.getElementById('catalogoProdutos').style.display = 'none';
+                document.getElementById('catalogoVazio').style.display = 'none';
+
+                // Buscar dados da loja primeiro
+                const lojaResponse = await fetch(`${API_BASE}/lojas/${lojaId}`);
+                if (!lojaResponse.ok) {
+                    throw new Error('Falha ao carregar dados da loja');
+                }
+                const lojaData = await lojaResponse.json();
+                lojaAtualCatalogo = lojaData;
+
+                // Buscar produtos da loja
+                const produtosResponse = await fetch(`${API_BASE}/loja/${lojaId}/produtos`);
+                if (!produtosResponse.ok) {
+                    throw new Error('Falha ao carregar produtos');
+                }
+
+                const produtosData = await produtosResponse.json();
+
+                // Esconder loading
+                document.getElementById('catalogoLoading').style.display = 'none';
+
+                if (produtosData.sucesso && produtosData.produtos && produtosData.produtos.length > 0) {
+                    // Renderizar produtos
+                    renderizarProdutos(produtosData.produtos);
+                    document.getElementById('catalogoProdutos').style.display = 'flex';
+                } else {
+                    // Mostrar mensagem de catálogo vazio
+                    document.getElementById('catalogoVazio').style.display = 'block';
+                }
+
+            } catch (error) {
+                console.error('Erro ao carregar catálogo:', error);
+                document.getElementById('catalogoLoading').style.display = 'none';
+                document.getElementById('catalogoVazio').innerHTML = `
+                    <div class="text-center py-4">
+                        <i class="bi bi-exclamation-triangle text-danger" style="font-size: 3rem;"></i>
+                        <h5 class="text-danger mt-3">Erro ao carregar produtos</h5>
+                        <p class="text-muted">Tente novamente mais tarde.</p>
+                    </div>
+                `;
+                document.getElementById('catalogoVazio').style.display = 'block';
+            }
+        }
+
+        // Função para renderizar produtos no catálogo
+        function renderizarProdutos(produtos) {
+            const container = document.getElementById('catalogoProdutos');
+            container.innerHTML = '';
+
+            produtos.forEach(produto => {
+                const precoFormatado = new Intl.NumberFormat('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                }).format(produto.preco);
+
+                const imagemSrc = produto.imagem || 'https://via.placeholder.com/300x200/6c757d/ffffff?text=Produto';
+
+                const produtoCard = document.createElement('div');
+                produtoCard.className = 'col-md-6 col-lg-4';
+                produtoCard.innerHTML = `
+                    <div class="card h-100 border-0 shadow-sm">
+                        <img src="${imagemSrc}" class="card-img-top" alt="${produto.nome}" style="height: 200px; object-fit: cover;">
+                        <div class="card-body d-flex flex-column">
+                            <h6 class="card-title">${produto.nome}</h6>
+                            <p class="card-text text-muted small">${produto.descricao}</p>
+                            <div class="mt-auto">
+                                <div class="d-flex justify-content-between align-items-center mb-2">
+                                    <span class="h5 text-success mb-0">${precoFormatado}</span>
+                                    <small class="text-muted">${produto.categoria}</small>
+                                </div>
+                                <button onclick="pedirProdutoWhatsApp('${produto._id}', '${produto.nome}', '${precoFormatado}')"
+                                        class="btn btn-success w-100">
+                                    <i class="bi bi-whatsapp me-1"></i> Pedir no WhatsApp
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(produtoCard);
+            });
+        }
+
+        // Função para pedir produto via WhatsApp
+        function pedirProdutoWhatsApp(produtoId, nomeProduto, preco) {
+            if (!lojaAtualCatalogo || !lojaAtualCatalogo.vendedor || !lojaAtualCatalogo.vendedor.whatsapp) {
+                mostrarAlerta('warning', 'WhatsApp da loja não disponível no momento.', '⚠️ Aviso:');
+                return;
+            }
+
+            const whatsappLink = formatarWhatsappParaWaMe(lojaAtualCatalogo.vendedor.whatsapp);
+            const mensagem = encodeURIComponent(`Olá! Vi o produto "${nomeProduto}" no valor de ${preco} no catálogo da loja ${lojaAtualCatalogo.nome} no Mercado 61. Gostaria de fazer um pedido!`);
+
+            if (whatsappLink) {
+                window.open(`https://wa.me/${whatsappLink}?text=${mensagem}`, '_blank', 'noopener,noreferrer');
+            } else {
+                mostrarAlerta('warning', 'Número do WhatsApp inválido.', '⚠️ Aviso:');
+            }
+        }
+
+        // Função para atualizar estatísticas
+        async function atualizarEstatisticas() {
+            try {
+                // Buscar estatísticas
+                const response = await fetch(`${API_BASE}/lojas`);
+                if (response.ok) {
+                    const data = await response.json();
+                    const totalLojas = data.lojas ? data.lojas.length : 0;
+                    document.getElementById('totalLojas').textContent = totalLojas;
+                }
+
+                // Buscar total de produtos
+                const produtosResponse = await fetch(`${API_BASE}/produtos/destaques?limite=1000`);
+                if (produtosResponse.ok) {
+                    const produtosData = await produtosResponse.json();
+                    const totalProdutos = produtosData.produtos ? produtosData.produtos.length : 0;
+                    document.getElementById('totalProdutos').textContent = totalProdutos;
+                }
+
+                // Calcular total de vendedores (aproximado pelas lojas)
+                const totalVendedores = document.getElementById('totalLojas').textContent;
+                document.getElementById('totalVendedores').textContent = totalVendedores;
+
+            } catch (error) {
+                console.error('Erro ao atualizar estatísticas:', error);
+            }
+        }
+
+        // Event listener para mudança de RA
+        document.getElementById('ra').addEventListener('change', async function() {
+            const raSelecionada = this.value;
+            if (raSelecionada) {
+                const coordenadas = await obterCoordenadasRA(raSelecionada);
+                console.log(`RA ${raSelecionada}:`, coordenadas);
+            }
+        });
+
+        // Event listener para submit do formulário
+        form.addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            toggleLoading(true);
+
+            try {
+                // Preparar dados
+                const formData = new FormData(form);
+                const dadosLoja = {
+                    nome: formData.get('nome'),
+                    slogan: formData.get('slogan') || '',
+                    ra: formData.get('ra'),
+                    categoria: formData.get('categoria'),
+                    setor: formData.get('setor') || 'Comercial',
+                    vendedor: {
+                        nome: formData.get('vendedorNome'),
+                        email: formData.get('vendedorEmail'),
+                        telefone: formData.get('vendedorTelefone'),
+                        whatsapp: formData.get('vendedorWhatsApp'),
+                        cpf: formData.get('vendedorCpf')
+                    },
+                    endereco: {
+                        rua: formData.get('enderecoRua'),
+                        numero: formData.get('enderecoNumero'),
+                        complemento: formData.get('enderecoComplemento') || '',
+                        localizacao: formData.get('enderecoLocalizacao'),
+                        cep: formData.get('enderecoCep')
+                    }
+                };
+
+                // Obter coordenadas da RA
+                const coordenadas = await obterCoordenadasRA(dadosLoja.ra);
+                dadosLoja.endereco.latitude = coordenadas.latitude;
+                dadosLoja.endereco.longitude = coordenadas.longitude;
+
+                // Enviar para API
+                const response = await fetch(`${API_BASE}/lojas`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dadosLoja)
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.sucesso) {
+                    mostrarAlerta('success', data.mensagem, '✅ Sucesso!');
+                    limparFormulario();
+                    carregarLojas();
+
+                    // Scroll para a vitrine de lojas
+                    const sectionTop = lojasVitrine.getBoundingClientRect().top + window.scrollY - 120;
+                    window.scrollTo({ top: sectionTop, behavior: 'smooth' });
+                } else {
+                    // Mostrar erros de validação
+                    if (data.erros) {
+                        const errosHTML = data.erros.map(erro => `<li>${erro}</li>`).join('');
+                        mostrarAlerta('danger', `<ul class="mb-0">${errosHTML}</ul>`, '❌ Erros de validação:');
+                    } else {
+                        mostrarAlerta('danger', data.mensagem || 'Erro desconhecido', '❌ Erro:');
+                    }
+                }
+
+            } catch (error) {
+                console.error('Erro:', error);
+                mostrarAlerta('danger', 'Erro de conexão com o servidor. Verifique se o backend está rodando.', '❌ Erro:');
+            } finally {
+                toggleLoading(false);
+            }
+        });
+
+        // Inicializar página
+        document.addEventListener('DOMContentLoaded', function() {
+            atualizarEstatisticas();
+            carregarLojas();
+            carregarVitrineProdutos();
+
+            // Filtrar lojas por RA
+            filtroRa.addEventListener('change', filtrarLojas);
+            filtroPesquisa.addEventListener('input', filtrarLojas);
+
+            // Busca de produtos
+            buscaPrincipal.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    buscarProdutos();
+                }
+            });
+            btnBuscar.addEventListener('click', buscarProdutos);
+
+            // Formulário de produto
+            produtoForm.addEventListener('submit', async function(e) {
+                e.preventDefault();
+                await cadastrarProduto();
+            });
+
+            // Animação de entrada
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate-fade-in');
+                }, index * 200);
+            });
+        });
+
+        // Função para cadastrar produto
+        async function cadastrarProduto() {
+            try {
+                toggleLoadingProduto(true);
+
+                const formData = new FormData(produtoForm);
+                const dadosProduto = {
+                    lojaId: formData.get('lojaId'),
+                    nome: formData.get('nome'),
+                    preco: parseFloat(formData.get('preco')),
+                    precoOriginal: formData.get('precoOriginal') ? parseFloat(formData.get('precoOriginal')) : null,
+                    descricao: formData.get('descricao') || 'Oferta rápida',
+                    categoria: formData.get('categoria') || 'Ofertas',
+                    estoque: formData.get('estoque') ? parseInt(formData.get('estoque')) : 0,
+                    imagem: formData.get('imagem') || null,
+                    freteGratis: formData.has('freteGratis')
+                };
+
+                // Enviar para API
+                const response = await fetch(`${API_BASE}/produtos`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(dadosProduto)
+                });
+
+                const data = await response.json();
+
+                if (response.ok && data.sucesso) {
+                    mostrarAlertaProduto('success', data.mensagem, '✅ Sucesso!');
+                    limparFormularioProduto();
+                    atualizarEstatisticas(); // Atualizar contadores
+                } else {
+                    // Mostrar erros de validação
+                    if (data.erros) {
+                        const errosHTML = data.erros.map(erro => `<li>${erro}</li>`).join('');
+                        mostrarAlertaProduto('danger', `<ul class="mb-0">${errosHTML}</ul>`, '❌ Erros de validação:');
+                    } else {
+                        mostrarAlertaProduto('danger', data.mensagem || 'Erro desconhecido', '❌ Erro:');
+                    }
+                }
+
+            } catch (error) {
+                console.error('Erro:', error);
+                mostrarAlertaProduto('danger', 'Erro de conexão com o servidor. Verifique se o backend está rodando.', '❌ Erro:');
+            } finally {
+                toggleLoadingProduto(false);
+            }
+        }
+
+        // Função para preencher formulário com dados de teste
+        async function preencherComDadosTeste(ra = 'Asa Sul') {
+            try {
+                const response = await fetch(`${API_BASE}/teste/dados-loja?ra=${encodeURIComponent(ra)}`);
+                if (response.ok) {
+                    const data = await response.json();
+
+                    // Preencher campos
+                    document.getElementById('nome').value = data.dados.nome;
+                    document.getElementById('ra').value = data.dados.ra;
+                    document.getElementById('categoria').value = data.dados.categoria;
+                    document.getElementById('setor').value = data.dados.setor;
+                    document.getElementById('vendedorNome').value = data.dados.vendedor.nome;
+                    document.getElementById('vendedorEmail').value = data.dados.vendedor.email;
+                    document.getElementById('vendedorTelefone').value = data.dados.vendedor.telefone;
+                    document.getElementById('vendedorCpf').value = data.dados.vendedor.cpf;
+                    document.getElementById('enderecoRua').value = data.dados.endereco.rua;
+                    document.getElementById('enderecoNumero').value = data.dados.endereco.numero;
+                    document.getElementById('enderecoComplemento').value = data.dados.endereco.complemento;
+                    document.getElementById('enderecoCep').value = data.dados.endereco.cep;
+
+                    mostrarAlerta('info', `Formulário preenchido com dados de teste para ${ra}`, 'ℹ️ Teste:');
+                }
+            } catch (error) {
+                console.error('Erro ao obter dados de teste:', error);
+            }
+        }
+
+        // Expor função global para console
+        window.preencherComDadosTeste = preencherComDadosTeste;
+        window.atualizarEstatisticas = atualizarEstatisticas;
+
+        // Event listeners para as abas (adicionado após DOMContentLoaded)
+        document.querySelectorAll('.nav-tabs .nav-link').forEach(tab => {
+            tab.addEventListener('shown.bs.tab', function(e) {
+                const targetId = e.target.getAttribute('data-bs-target').substring(1); // Remove o #
+                if (targetId === 'lojas-section') {
+                    document.getElementById('produtos-section').style.display = 'none';
+                    document.querySelector('.loja-vitrine-section').style.display = 'block';
+                } else if (targetId === 'produtos-section') {
+                    document.querySelector('.loja-vitrine-section').style.display = 'none';
+                }
+            });
+        });
+
+        console.log('🎯 Mercado 61 - Frontend carregado!');
+        console.log('💡 Dicas:');
+        console.log('• Use preencherComDadosTeste() no console para testar');
+        console.log('• Use preencherComDadosTeste("Taguatinga") para RA específica');
+        console.log('• Use atualizarEstatisticas() para atualizar contadores');
+    </script>
+</body>
+</html>
